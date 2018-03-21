@@ -11,6 +11,7 @@ import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.Menu;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -62,9 +63,10 @@ public class Utils {
         return Typeface.createFromAsset(assetManager, "fonts/ShadowsIntoLight.ttf");
     }
 
-    public static Intent intentUserSharedPreferences(Context context, Class classes, Boolean status) {
+    public static Intent intentUserSharedPreferences(Context context, Class classes, boolean status, boolean isFb) {
         SharedPreferencesUtil sharedPreferencesUtil = new SharedPreferencesUtil(context);
-        sharedPreferencesUtil.setUserRegistered(status);
+        sharedPreferencesUtil.setUserRegistered(status, isFb);
+
         return new Intent(context, classes);
     }
 

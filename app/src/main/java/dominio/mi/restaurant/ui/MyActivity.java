@@ -12,7 +12,11 @@ import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.facebook.login.LoginManager;
+import com.google.firebase.auth.FirebaseAuth;
+
 import dominio.mi.restaurant.R;
+import dominio.mi.restaurant.SharedPreferencesUtil;
 import dominio.mi.restaurant.Utils;
 import dominio.mi.restaurant.ui.activities.CategoriesActivity;
 import dominio.mi.restaurant.ui.activities.LoginActivity;
@@ -23,11 +27,15 @@ import dominio.mi.restaurant.ui.activities.LoginActivity;
 
 public class MyActivity extends AppCompatActivity {
     public static String ERROR_MESSAGE = "Sorry, an error occurred";
+    private FirebaseAuth firebaseAuth;
+    private LoginManager loginManager;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ERROR_MESSAGE = this.getString(R.string.sorry_an_error_occurred);
+        firebaseAuth = FirebaseAuth.getInstance();
+        loginManager = LoginManager.getInstance();
     }
 
     @Override
@@ -52,19 +60,28 @@ public class MyActivity extends AppCompatActivity {
                 this.finish();
                 return true;
             case R.id.action_logout:
-                startActivity(Utils.intentUserSharedPreferences(this, LoginActivity.class, false));
+                SharedPreferencesUtil userData = new SharedPreferencesUtil(this);
+                if (userData.getUserIsRegisteredFb()) {
+                    startActivity(Utils.intentUserSharedPreferences(this, LoginActivity.class, false, true));
+                    firebaseAuth.signOut();
+                    loginManager.logOut();
+
+                } else {
+                    startActivity(Utils.intentUserSharedPreferences(this, LoginActivity.class, false, false));
+                }
+
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
 
-    public void getToolbar(){
+    public void getToolbar() {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
     }
 
-    public void getTitleApp(){
+    public void getTitleApp() {
         TextView textLogoBar = findViewById(R.id.logo_text_restobar);
         textLogoBar.setTypeface(Utils.getFontsAcme(getAssets()));
 
@@ -72,7 +89,7 @@ public class MyActivity extends AppCompatActivity {
         textSearchBar.setTypeface(Utils.getFontShadow(getAssets()));
     }
 
-    public void toast(String message){
+    public void toast(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 

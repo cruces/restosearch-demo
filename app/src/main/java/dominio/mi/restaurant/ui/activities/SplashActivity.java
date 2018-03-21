@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 import dominio.mi.restaurant.R;
 import dominio.mi.restaurant.SharedPreferencesUtil;
 import dominio.mi.restaurant.Utils;

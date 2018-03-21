@@ -117,7 +117,7 @@ public class RegisterActivity extends MyActivity implements DatePickerDialog.OnD
             toast(this.getString(R.string.accept_terms_and_conditions));
         } else {
             startActivity(Utils.intentUserSharedPreferences(this,
-                    CategoriesActivity.class, true));
+                    CategoriesActivity.class, true, false));
         }
     }
 }
