@@ -18,7 +18,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import dominio.mi.restaurant.R;
 import dominio.mi.restaurant.SharedPreferencesUtil;
 import dominio.mi.restaurant.Utils;
-import dominio.mi.restaurant.ui.activities.CategoriesActivity;
 import dominio.mi.restaurant.ui.activities.LoginActivity;
 
 /**
@@ -27,7 +26,7 @@ import dominio.mi.restaurant.ui.activities.LoginActivity;
 
 public class MyActivity extends AppCompatActivity {
     public static String ERROR_MESSAGE = "Sorry, an error occurred";
-    private FirebaseAuth firebaseAuth;
+    public FirebaseAuth firebaseAuth;
     private LoginManager loginManager;
 
     @Override

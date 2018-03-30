@@ -11,7 +11,6 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class SharedPreferencesUtil {
     private SharedPreferences sharedPreferences;
-    private FirebaseAuth firebaseAuth;
 
     public SharedPreferencesUtil(Context context) {
         sharedPreferences = context.getSharedPreferences("restaurant", Context.MODE_PRIVATE);
@@ -26,10 +25,6 @@ public class SharedPreferencesUtil {
         }
     }
 
-//    public void setUserRegisteredFb(boolean logFb) {
-//        sharedPreferences.edit().putBoolean("userRegisteredFb", logFb).apply();
-//    }
-
     public boolean getUserRegistered() {
         return sharedPreferences.getBoolean("userRegistered", false);
     }
@@ -37,10 +32,6 @@ public class SharedPreferencesUtil {
     public boolean getUserIsRegisteredFb() {
         return sharedPreferences.getBoolean("userRegisteredFb", false);
     }
-
-//    public boolean getUserRegisteredFb() {
-//        return sharedPreferences.getBoolean("userRegisteredFb", false);
-//    }
 
     public void cleanSharedPreferences() {
         sharedPreferences.edit().clear().apply();

@@ -4,6 +4,7 @@
     android:layout_height="match_parent">
 
     <RelativeLayout
+        android:id="@+id/login_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorPrimaryBackground"
@@ -105,7 +106,8 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="30dp"
                 android:layout_marginTop="30dp"
-                android:padding="10dp" />
+                android:padding="10dp"
+                android:textSize="14sp" />
 
         </LinearLayout>
 
@@ -123,5 +125,12 @@
             android:text="@string/dont_have_an_account" />
 
     </RelativeLayout>
+
+    <View
+        android:id="@+id/overlay_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimaryText"
+        android:visibility="gone" />
 
 </android.support.design.widget.CoordinatorLayout>

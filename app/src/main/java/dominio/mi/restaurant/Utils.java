@@ -8,10 +8,11 @@ import android.graphics.PorterDuff;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
+import android.text.TextUtils;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.Menu;
 
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -67,7 +68,10 @@ public class Utils {
         SharedPreferencesUtil sharedPreferencesUtil = new SharedPreferencesUtil(context);
         sharedPreferencesUtil.setUserRegistered(status, isFb);
 
-        return new Intent(context, classes);
+        Intent intent = new Intent(context, classes);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
+        return intent;
     }
 
     public static boolean menu(Activity activity, Menu menu) {
@@ -83,5 +87,13 @@ public class Utils {
         }
 
         return true;
+    }
+
+    public static boolean isValidEmail(String email) {
+        return !TextUtils.isEmpty(email) && Patterns.EMAIL_ADDRESS.matcher(email).matches();
+    }
+
+    public static boolean isValidPassword(String password) {
+        return password.length() >= 4;
     }
 }

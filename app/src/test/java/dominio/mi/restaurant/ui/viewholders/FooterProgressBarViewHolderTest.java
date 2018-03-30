@@ -9,7 +9,6 @@ import org.junit.Test;
 import org.mockito.Mockito;
 
 import dominio.mi.restaurant.R;
-import dominio.mi.restaurant.ui.viewholders.FooterProgressBarViewHolder;
 
 /**
  * Created by Dumevi Cruces on 26/01/18.

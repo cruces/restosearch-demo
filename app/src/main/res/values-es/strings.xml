@@ -54,6 +54,8 @@
     <string name="empty_fullname">El nombre no puede estar vacío</string>
     <string name="same_password">Las contraseñas no coinciden</string>
     <string name="accept_terms_and_conditions">Tienes que aceptar los términos y condiciones</string>
+    <string name="login_canceled">Login cancelado</string>
+    <string name="error_trying_login_fb_account">Disculpe, error al tratar de ingresar con tu cuenta de facebook</string>
 
     <string name="facebook_app_id">393004571139940</string>
     <string name="fb_login_protocol_scheme">fb393004571139940</string>
